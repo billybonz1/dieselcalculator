@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Калькулятор</title>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/jquery-ui/jquery-ui.min.js"></script>
+    <script src="calculator.js"></script>
+    <link rel="stylesheet" href="libs/jquery-ui/themes/ui-darkness/jquery-ui.css">
+    <style>
+        label{
+            display: block;
+        }
+        .alert-danger{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="POST" id="form" action="javascript:void(null);">
+    <div class="wrapper_type_of_fuel">
+        <div class="header_type_of_fuel">1. Выберите тип топлива</div>
+        <div class="content_type_of_fuel">
+            <div class="type_of_fuel">
+                <label>
+                    <span>Дизельное топливо</span>
+                    <input type="radio" class="type_of_fuel_input" name="type_of_fuel" data-value1="32.5" data-value2="31.9" data-value3="29.9">
+                </label>
+                <label>
+                    <span>Керосин</span>
+                    <input type="radio" class="type_of_fuel_input" name="type_of_fuel" data-value1="31.5" data-value2="30.9" data-value3="28.9">
+                </label>
+                <label>
+                    <span>СМТ</span>
+                    <input type="radio" class="type_of_fuel_input" name="type_of_fuel" data-value1="30.5" data-value2="29.9" data-value3="28.9">
+                </label>
+                <label>
+                    <span>ДГК</span>
+                    <input type="radio" class="type_of_fuel_input" name="type_of_fuel" data-value1="29.5" data-value2="28.9" data-value3="27.9">
+                </label>
+                <label>
+                    <span>Печное топливо</span>
+                    <input type="radio" class="type_of_fuel_input" name="type_of_fuel" data-value1="28.5" data-value2="27.9" data-value3="26.9">
+                </label>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="alert alert-danger" data-name="fuel_type">
+        Выберите тип топлива
+    </div>
+     <div class="alert alert-danger" data-name="fuel_liters">
+         Введите количетство литров
+     </div>
+
+
+
+        <script>
+            function proverka(input) {
+                input.value = input.value.replace(/[^\d]/g, '');
+            }
+        </script>
+    <div class="wrapper_value_fuel">
+        <label>
+            <input type="text" value="" onkeyup="return proverka(this);" class="value_fuel" name="value_fuel">
+            <span>литров</span>
+        </label>
+    </div>
+
+
+        <div class="price">
+            <div class="price1" style="display: none;">Стоимость литра - <span>28</span></div>
+            <div class="price2" style="display: none;">К оплате - <span>28000</span></div>
+        </div>
+
+
+    <div class="mesto_dostavki">
+        место доставки
+        <label>
+            <input type="text" name="address">
+        </label>
+    </div>
+    <div class="date_delivery">
+        <div class="header_date_delivery">4. Дата доставки</div>
+        <div class="content_date_delivery">
+            <input type="text" id="datepicker" name="datepicker">
+        </div>
+    </div>
+    <div class="pay_method">
+        <div class="header_pay_method">5. Способ оплаты</div>
+        <div class="content_pay_method">
+            <label>
+                <input type="radio" name="pay_method" value="Безналичный" id="pay_method_beznal"> Безналичный
+            </label>
+            <label>
+                <input type="radio" name="pay_method" value="Наличный" id="pay_method_nal"> Наличный
+            </label>
+        </div>
+    </div>
+
+    <div class="name_user">
+        <label for="name_user">ФИО</label>
+        <input type="text" id="name_user" name="name">
+    </div>
+    <div class="phone_user">
+        <label for="phone_user">Телефон</label>
+        <input type="text" id="phone_user" name="phone">
+    </div>
+    <div class="comment_user">
+        <label for="comment_user">Комментарий</label>
+        <input type="text" id="comment_user" name="comment">
+    </div>
+    <button type="submit">Отправить заявку</button>
+</form>
+</body>
+
+
+
+</html>

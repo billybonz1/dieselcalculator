@@ -41,18 +41,24 @@ $( function() {
         var type = $("[name=type_of_fuel]:checked");
         var type_val = 0;
 
-        if(volume){
-            if(volume < 5000){
-                type_val = parseFloat(type.data("value1"));
-            }else if(volume >= 5000 && volume <= 10000){
-                type_val = parseFloat(type.data("value2"));
-            }else{
-                type_val = parseFloat(type.data("value3"));
+
+
+        if(!isNaN(volume)){
+            if(type.data('value1')){
+                if(volume < 5000){
+                    type_val = parseFloat(type.data("value1"));
+                }else if(volume >= 5000 && volume <= 10000){
+                    type_val = parseFloat(type.data("value2"));
+                }else{
+                    type_val = parseFloat(type.data("value3"));
+                }
             }
         }else{
-            type_val = parseFloat(type.data("value1"));
+            if(type.data('value1')){
+                type_val = parseFloat(type.data("value1"));
+            }
         }
-
+        console.log(volume,type_val);
 
         if(type_val != 0){
             $(".price1 span").text(type_val);
@@ -63,20 +69,21 @@ $( function() {
             $('[data-name="fuel_type"]').show();
         }
 
-        if(volume && type_val){
+        if(!isNaN(volume) && type_val != 0){
             var price = type_val*volume;
             $(".price2 span").text(price);
             $(".price2").show();
-            $('[data-name="fuel_liters"]').hide();
         }else{
             $(".price2").hide();
+
+        }
+
+        if(!isNaN(volume)){
+            $('[data-name="fuel_liters"]').hide();
+        }else{
             $('[data-name="fuel_liters"]').show();
         }
 
-
-
-
-        console.log(volume,type_val);
     }
 
 
